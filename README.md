@@ -1,6 +1,6 @@
 # AWS Cybersecurity Threat Detection ML Pipeline
 
-Security-focused machine learning pipeline built on AWS to detect anomalous network traffic using SageMaker and XGBoost. Designed with production-grade controls including private VPC deployment, least-privilege IAM, encryption, and centralized logging.
+Security-focused machine learning pipeline built on AWS to detect anomalous network traffic using SageMaker and XGBoost. Designed with production-grade controls including private VPC deployment, least-privilege IAM, encryption, and centralized logging.This project reflects a security-first design philosophy where infrastructure decisions are driven by threat modeling rather than convenience.
 
 ## Why This Project Matters
 
@@ -42,7 +42,7 @@ Critical compute resources are deployed inside a private VPC to prevent unintend
 
 Security controls — including IAM, encryption, temporary credentials, and centralized logging — are enforced across every stage of the ML lifecycle.
 
-### Potential Threats
+## Threat Model
 - Unauthorized access to training data stored in Amazon S3
 - Model poisoning through tampered datasets or preprocessing logic
 - Privilege escalation due to overly permissive IAM roles
@@ -58,18 +58,6 @@ Security controls — including IAM, encryption, temporary credentials, and cent
 - Centralized logging and metrics in Amazon CloudWatch for visibility and anomaly detection
 
 This threat model directly informed architectural decisions to ensure confidentiality, integrity, and availability across the entire machine learning lifecycle.
-
-## Threat Model
-
-Potential risks considered:
-
-- Unauthorized dataset access  
-- Model poisoning  
-- Privilege escalation  
-- Data exfiltration  
-- Endpoint abuse  
-
-Mitigations were intentionally built into the architecture.
 
 ## Tech Stack
 
