@@ -5,7 +5,7 @@ Production-style threat detection system built on AWS using SageMaker and XGBoos
 ## Architecture
 ![Architecture](architecture/secure-ml-threat-detection-architecture.png)
 
-## 🔐 Threat Model
+## Threat Model
 
 This system was designed with a security-first mindset, treating the ML pipeline as a production workload rather than a research demo. The following threat scenarios were considered during design.
 
