@@ -1,6 +1,10 @@
 # AWS Cybersecurity Threat Detection ML Pipeline
 
-Production-style threat detection system built on AWS using SageMaker and XGBoost to identify anomalous network traffic.
+Security-focused machine learning pipeline built on AWS to detect anomalous network traffic using SageMaker and XGBoost. Designed with production-grade controls including private VPC deployment, least-privilege IAM, encryption, and centralized logging.
+
+## Why This Project Matters
+
+This project demonstrates how security controls can be intentionally embedded into ML infrastructure rather than retrofitted after deployment. Most ML demos ignore security. This project treats ML like a production workload — where logging, IAM, encryption, and monitoring are mandatory.
 
 ## Architecture
 ![Architecture](architecture/secure-ml-threat-detection-architecture.png)
@@ -38,10 +42,6 @@ Critical compute resources are deployed inside a private VPC to prevent unintend
 
 Security controls — including IAM, encryption, temporary credentials, and centralized logging — are enforced across every stage of the ML lifecycle.
 
-## Threat Model
-
-This system was designed with a security-first mindset, treating the ML pipeline as a production workload rather than a research demo. The following threat scenarios were considered during design.
-
 ### Potential Threats
 - Unauthorized access to training data stored in Amazon S3
 - Model poisoning through tampered datasets or preprocessing logic
@@ -59,16 +59,6 @@ This system was designed with a security-first mindset, treating the ML pipeline
 
 This threat model directly informed architectural decisions to ensure confidentiality, integrity, and availability across the entire machine learning lifecycle.
 
-## Security Design Decisions
-
-This system was designed using a security-first approach:
-
-• All data encrypted at rest (S3 SSE)  
-• IAM roles enforce least privilege  
-• Temporary credentials used via STS  
-• Model artifacts encrypted and versioned  
-• CloudWatch enabled for detection visibility  
-
 ## Threat Model
 
 Potential risks considered:
@@ -81,22 +71,15 @@ Potential risks considered:
 
 Mitigations were intentionally built into the architecture.
 
-## Why This Project Matters
-
-Most ML demos ignore security.
-
-This project treats ML like a production workload — where logging, IAM, encryption, and monitoring are mandatory.
-
 ## Tech Stack
 
-AWS  
-SageMaker  
-Lambda  
-S3  
-IAM  
-CloudWatch  
-XGBoost  
-Python  
+**Cloud Platform:** AWS  
+**ML Services:** Amazon SageMaker, XGBoost  
+**Compute:** AWS Lambda  
+**Storage:** Amazon S3 (encrypted & versioned)  
+**Security:** IAM, STS, VPC  
+**Observability:** Amazon CloudWatch  
+**Language:** Python  
 
 ## Future Improvements
 
