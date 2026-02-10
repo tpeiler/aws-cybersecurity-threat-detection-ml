@@ -5,6 +5,39 @@ Production-style threat detection system built on AWS using SageMaker and XGBoos
 ## Architecture
 ![Architecture](architecture/secure-ml-threat-detection-architecture.png)
 
+## Architecture Walkthrough
+
+This pipeline ingests network traffic logs and processes them through a secure, production-style machine learning workflow designed for threat detection.
+
+1. **Log Ingestion**  
+   Network traffic logs are uploaded to an encrypted Amazon S3 bucket.
+
+2. **Feature Engineering**  
+   An AWS Lambda function is triggered on object creation to preprocess the data and generate ML-ready features.
+
+3. **Secure Data Storage**  
+   Processed datasets are written to a versioned S3 bucket to preserve integrity and support reproducibility.
+
+4. **Model Training**  
+   Amazon SageMaker trains an XGBoost model within a private VPC using least-privilege IAM roles.
+
+5. **Artifact Protection**  
+   Trained model artifacts are stored in an encrypted S3 bucket with controlled access.
+
+6. **Real-Time Inference**  
+   The model is deployed to a SageMaker endpoint for live threat detection.
+
+7. **Monitoring & Visibility**  
+   Logs and metrics stream into Amazon CloudWatch, enabling operational monitoring and anomaly detection.
+
+---
+
+### Security Boundary
+
+Critical compute resources are deployed inside a private VPC to prevent unintended public exposure.  
+
+Security controls — including IAM, encryption, temporary credentials, and centralized logging — are enforced across every stage of the ML lifecycle.
+
 ## Threat Model
 
 This system was designed with a security-first mindset, treating the ML pipeline as a production workload rather than a research demo. The following threat scenarios were considered during design.
