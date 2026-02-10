@@ -5,6 +5,36 @@ Production-style threat detection system built on AWS using SageMaker and XGBoos
 ## Architecture
 ![Architecture](architecture/secure-ml-threat-detection-architecture.png)
 
+## Threat Model
+
+This system was designed with a security-first mindset, treating the ML pipeline as a production workload rather than a research demo. The following threat scenarios were considered during design:
+
+Potential Threats
+
+Unauthorized access to training data stored in S3
+
+Model poisoning through tampered datasets or preprocessing logic
+
+Privilege escalation via overly permissive IAM roles
+
+Data exfiltration from model artifacts or inference endpoints
+
+Endpoint abuse through unrestricted or public access
+
+Mitigations Implemented
+
+Least-privilege IAM execution roles scoped to specific services and actions
+
+S3 encryption at rest (SSE-S3) for raw data, processed datasets, and model artifacts
+
+Versioned S3 buckets to support data integrity and rollback
+
+Private VPC deployment for Lambda, SageMaker training jobs, and inference endpoints
+
+Temporary credentials via AWS STS, avoiding long-lived secrets
+
+Centralized logging and metrics in Amazon CloudWatch for visibility and anomaly detection
+
 ## Security Design Decisions
 
 This system was designed using a security-first approach:
